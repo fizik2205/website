@@ -5,17 +5,17 @@ const CONFIG = {
         {
             title: 'Out Of My League',
             artist: 'Fitz and The Tantrums',
-            src: 'Out-of-My-League.mp3.mpeg'
+            src: 'https://fizik2205.github.io/website/Out-of-My-League.mp3.mpeg'
         },
         {
             title: 'The Lost Song',
             artist: 'The Cat Empire',
-            src: 'The-Lost-Song.mp3'
+            src: 'https://fizik2205.github.io/website/The-Lost-Song.mp3'
         },
         {
             title: 'Zhanbyr',
             artist: 'Kunzharyq',
-            src: 'zhanbyr.mp3'
+            src: 'https://fizik2205.github.io/website/zhanbyr.mp3'
         },
         {
             title: 'Tulamaidy',
@@ -217,6 +217,7 @@ function playBouquet() {
 }
 
 replayBouquetBtn.addEventListener('click', playBouquet);
+
 
 
 
