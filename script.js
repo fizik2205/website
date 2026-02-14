@@ -20,7 +20,7 @@ const CONFIG = {
         {
             title: 'Tulamaidy',
             artist: 'Kunzharyq',
-            src: 'Tulamaidy.mp3'
+            src: 'https://fizik2205.github.io/website/Tulamaidy.mp3'
         }
     ]
 };
@@ -217,5 +217,6 @@ function playBouquet() {
 }
 
 replayBouquetBtn.addEventListener('click', playBouquet);
+
 
 
