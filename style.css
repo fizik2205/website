@@ -1,0 +1,952 @@
+/* ===== CSS Variables & Design System ===== */
+:root {
+    /* Lavender Color Palette */
+    --primary: #b19cd9;
+    --primary-light: #d4c5f9;
+    --primary-dark: #8b7ab8;
+    --accent: #9f86c0;
+    --accent-light: #e6e6fa;
+    --accent-pink: #ffb7b2;
+    --text-primary: #4a4a4a;
+    --text-secondary: #7a7a7a;
+    --white: #ffffff;
+
+    /* Gradients */
+    --bg-gradient: linear-gradient(180deg, #e6e6fa 0%, #ffffff 100%);
+    --card-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+    --pill-gradient-active: linear-gradient(135deg, #b19cd9 0%, #9f86c0 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 5px 15px rgba(177, 156, 217, 0.1);
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+    /* Typography */
+    --font-primary: 'Inter', sans-serif;
+    --font-script: 'Dancing Script', cursive;
+
+    /* Spacing & Radius */
+    --radius-card: 20px;
+    --radius-pill: 50px;
+}
+
+/* ===== Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cursive-text {
+    font-family: var(--font-script);
+    font-weight: 700;
+}
+
+/* ===== Password Screen ===== */
+.password-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 1s ease;
+}
+
+.password-box {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+    animation: bounceIn 1s forwards;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.password-box.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+}
+
+.password-title {
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+}
+
+#password-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid var(--accent-light);
+    border-radius: 12px;
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    transition: border 0.3s ease;
+    outline: none;
+    text-align: center;
+}
+
+#password-input:focus {
+    border-color: var(--primary);
+}
+
+.unlock-btn {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.unlock-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(177, 156, 217, 0.4);
+}
+
+.password-error {
+    color: #ff6b6b;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    min-height: 1.2em;
+}
+
+.welcome-message {
+    position: absolute;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.welcome-message.show {
+    opacity: 1;
+}
+
+.welcome-text {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+}
+
+/* ===== Main Dashboard ===== */
+.main-content {
+    max-width: 950px;
+    /* Wider */
+    margin: 0 auto;
+    padding: 1.5rem;
+    width: 100%;
+    opacity: 0;
+    animation: fadeInContent 1s ease forwards;
+    animation-delay: 2.5s;
+}
+
+@keyframes fadeInContent {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Navigation Pills */
+.nav-pills {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.pill-btn {
+    padding: 8px 20px;
+    border: none;
+    background: var(--white);
+    color: var(--text-secondary);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-icon {
+    font-size: 1.1em;
+}
+
+.pill-btn:hover {
+    transform: translateY(-2px);
+    color: var(--primary);
+}
+
+.pill-btn.active {
+    background: var(--pill-gradient-active);
+    color: var(--white);
+    box-shadow: 0 5px 15px rgba(177, 156, 217, 0.4);
+}
+
+/* Content Card */
+.content-card {
+    background: var(--white);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    min-height: 400px;
+    /* Shorter */
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeInTab 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-title {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* ===== Love Letter Tab ===== */
+#love-letter-tab .letter-container {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    border: none;
+    text-align: left;
+    max-width: 90%;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.letter-header {
+    font-family: var(--font-script);
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.letter-inner-box {
+    border: 2px dashed rgba(177, 156, 217, 0.4);
+    border-radius: 15px;
+    padding: 2rem;
+    position: relative;
+}
+
+.inner-box-title {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--white);
+    padding: 0 10px;
+    font-family: var(--font-script);
+    color: var(--primary-dark);
+    font-size: 1.2rem;
+}
+
+.letter-body {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.letter-body p {
+    margin-bottom: 1rem;
+}
+
+.letter-signature {
+    font-family: var(--font-script);
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-top: 2rem;
+    text-align: right;
+}
+
+/* ===== Music Tab ===== */
+.music-player-card {
+    background: var(--bg-gradient);
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.album-art-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--white);
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.vinyl-disc {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    border-radius: 50%;
+    position: relative;
+    animation: spin 4s linear infinite paused;
+}
+
+.vinyl-disc.playing {
+    animation-play-state: running;
+}
+
+.vinyl-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 2px solid var(--white);
+}
+
+.now-playing-info h3 {
+    font-size: 1.4rem;
+    color: var(--primary-dark);
+    margin-bottom: 0.2rem;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 10px;
+    width: 0%;
+}
+
+.seek-slider {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+}
+
+.play-btn {
+    width: 45px;
+    height: 45px;
+    background: var(--primary);
+    border-radius: 50%;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(177, 156, 217, 0.4);
+    font-size: 1rem;
+}
+
+/* Song Cards */
+.song-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.song-card {
+    background: #faf8ff;
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.song-card:hover,
+.song-card.active {
+    background: #f0e6ff;
+    transform: translateY(-3px);
+    border-color: var(--primary);
+}
+
+.song-card-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.1rem;
+}
+
+.song-card-artist {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* ===== Cake Tab (Vector Match) ===== */
+.cake-scene-container {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: radial-gradient(circle at center, #ffebee 0%, #fff 70%);
+    /* Soft background glow */
+}
+
+/* Confetti background bits */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float 3s infinite ease-in-out;
+}
+
+.c1 {
+    background: #ffb7b2;
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.c2 {
+    background: #e6e6fa;
+    top: 30%;
+    right: 25%;
+    animation-delay: 1s;
+}
+
+.c3 {
+    background: #ffd700;
+    bottom: 30%;
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.c4 {
+    background: #ff9e99;
+    top: 15%;
+    right: 40%;
+    animation-delay: 1.5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.cake-vector {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    /* Base height for the cake part */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Plate */
+.v-plate {
+    width: 260px;
+    height: 12px;
+    background: #fff;
+    border-radius: 10px;
+    position: absolute;
+    bottom: -10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Three Chocolate Layers */
+.v-layer {
+    width: 220px;
+    height: 40px;
+    background: #a1887f;
+    /* Lighter Brown */
+    border-radius: 15px;
+    position: relative;
+    margin-top: 5px;
+    /* More gap */
+}
+
+/* Filling Lines */
+.v-layer::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 15px;
+    right: 15px;
+    height: 2px;
+    background: #8d6e63;
+    /* Darker filling */
+    opacity: 0.5;
+}
+
+.v-layer-1::after {
+    display: none;
+}
+
+/* Bottom layer doesn't need filling below it */
+
+/* Layer sizing */
+.v-layer-1 {
+    width: 220px;
+    z-index: 3;
+}
+
+/* Bottom */
+.v-layer-2 {
+    width: 220px;
+    z-index: 2;
+}
+
+/* Middle */
+.v-layer-3 {
+    width: 220px;
+    z-index: 1;
+    border-radius: 15px;
+}
+
+/* Top */
+
+/* Icing */
+.v-icing-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.v-icing-top {
+    width: 100%;
+    height: 25px;
+    background: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.v-drip {
+    position: absolute;
+    top: 20px;
+    width: 18px;
+    background: #fff;
+    border-radius: 0 0 10px 10px;
+}
+
+.vd-1 {
+    left: 0px;
+    height: 20px;
+    width: 25px;
+    border-radius: 0 0 10px 0;
+}
+
+.vd-2 {
+    left: 40px;
+    height: 35px;
+}
+
+.vd-3 {
+    left: 80px;
+    height: 20px;
+}
+
+.vd-4 {
+    left: 120px;
+    height: 40px;
+}
+
+.vd-5 {
+    left: 160px;
+    height: 25px;
+}
+
+.vd-6 {
+    right: 0;
+    height: 15px;
+    width: 20px;
+    border-radius: 0 0 0 10px;
+}
+
+.vd-fill {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: #fff;
+}
+
+/* Candle - Tall & White */
+.v-candle-container {
+    position: absolute;
+    bottom: 125px;
+    /* Sits on top of layers (3 * 40 + gap) */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 100px;
+    /* Tall */
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.v-candle-body {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.v-candle-stripe {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    background: #ffb7b2;
+    /* Pink line */
+}
+
+.v-flame {
+    position: absolute;
+    bottom: 100%;
+    /* On top of candle */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: #ffeb3b;
+    /* Yellow fire */
+    border-radius: 50% 50% 20% 20%;
+    box-shadow:
+        0 0 10px #ffeb3b,
+        0 0 20px #ff9800,
+        0 0 40px rgba(255, 152, 0, 0.5);
+    animation: flicker 0.6s infinite alternate;
+    opacity: 0;
+    margin-bottom: 2px;
+    /* Sit right on top */
+}
+
+.v-candle-container.lit .v-flame {
+    opacity: 1;
+}
+
+.v-candle-container.show {
+    opacity: 1;
+}
+
+.rebuild-btn {
+    margin-top: 3rem;
+    position: relative;
+    z-index: 10;
+}
+
+
+/* ===== Flowers Tab (3 Tulips, No Wrap) ===== */
+.bouquet-container {
+    height: 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 20px;
+}
+
+.flower-bunch {
+    position: relative;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* Tulip Positioning - Fan from Center */
+.tulip {
+    position: absolute;
+    bottom: 0;
+    width: 8px;
+    /* Stem width */
+    height: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    transition: height 1s ease-out, transform 1s ease-out;
+    transform-origin: bottom center;
+    left: 50%;
+    /* All start center */
+    margin-left: -4px;
+    /* Center alignment fix */
+}
+
+/* Fan Angles */
+.tulip.grow.t-center {
+    height: 300px;
+    z-index: 5;
+}
+
+.tulip.grow.t-left {
+    height: 280px;
+    transform: rotate(-15deg);
+    z-index: 4;
+}
+
+.tulip.grow.t-far-left {
+    height: 240px;
+    transform: rotate(-35deg);
+    z-index: 3;
+}
+
+.tulip.grow.t-right {
+    height: 280px;
+    transform: rotate(15deg);
+    z-index: 4;
+}
+
+.tulip.grow.t-far-right {
+    height: 240px;
+    transform: rotate(35deg);
+    z-index: 3;
+}
+
+/* Flower Head & Petals */
+.flower-head {
+    width: 40px;
+    height: 50px;
+    position: relative;
+    margin-bottom: -10px;
+    z-index: 2;
+    transform: scale(0);
+    transition: transform 0.4s 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tulip.grow .flower-head {
+    transform: scale(1);
+}
+
+.petal {
+    position: absolute;
+    bottom: 0;
+    border-radius: 50% 50% 20% 20%;
+    background: var(--primary);
+    box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.1);
+    transform-origin: bottom center;
+}
+
+/* Center Petal */
+.p-center {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 50px;
+    z-index: 2;
+    background: var(--primary);
+}
+
+/* Side Petals (Indents) */
+.p-left {
+    left: 2px;
+    width: 22px;
+    height: 42px;
+    transform: rotate(-20deg);
+    z-index: 1;
+    background: var(--primary-dark);
+}
+
+.p-right {
+    right: 2px;
+    width: 22px;
+    height: 42px;
+    transform: rotate(20deg);
+    z-index: 1;
+    background: var(--primary-dark);
+}
+
+/* Stem */
+.stem {
+    width: 8px;
+    height: 100%;
+    background: #8BC34A;
+    border-radius: 4px;
+    box-shadow: inset 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* The Bow at Intersection */
+.bouquet-bow {
+    position: absolute;
+    bottom: 30px;
+    /* Intersection point for fanned stems */
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    z-index: 10;
+    transition: transform 0.5s 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Delayed show */
+}
+
+.bouquet-bow.show {
+    transform: translateX(-50%) scale(1);
+}
+
+.bb-center {
+    width: 15px;
+    height: 15px;
+    background: #ff8a80;
+    /* Darker pink */
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.bb-left,
+.bb-right {
+    position: absolute;
+    top: -5px;
+    width: 40px;
+    height: 25px;
+    background: #ff8a80;
+    border-radius: 50%;
+}
+
+.bb-left {
+    left: -30px;
+    transform: rotate(-10deg);
+}
+
+.bb-right {
+    left: 5px;
+    transform: rotate(10deg);
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.05);
+        filter: brightness(1.1);
+    }
+}

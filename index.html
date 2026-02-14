@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 💜</title>
+    <meta name="description" content="A special birthday tribute for someone extraordinary">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Password Screen -->
+    <div id="password-screen" class="password-screen">
+        <div id="password-box" class="password-box">
+            <h2 class="password-title cursive-text">Enter Password</h2>
+            <input type="password" id="password-input" placeholder="Password..." autocomplete="off">
+            <button id="unlock-btn" class="unlock-btn">Unlock</button>
+            <p id="password-error" class="password-error"></p>
+        </div>
+
+        <div id="welcome-message" class="welcome-message hidden">
+            <h1 class="welcome-text cursive-text">Happy Birthday, Nurgul abla!</h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content hidden">
+        <!-- Navigation Pills -->
+        <nav class="nav-pills">
+            <button class="pill-btn active" data-tab="love-letter">
+                <span class="btn-icon">💌</span> Love Letter
+            </button>
+            <button class="pill-btn" data-tab="music">
+                <span class="btn-icon">🎵</span> Music
+            </button>
+            <button class="pill-btn" data-tab="cake">
+                <span class="btn-icon">🎂</span> Cake
+            </button>
+            <button class="pill-btn" data-tab="flowers">
+                <span class="btn-icon">💐</span> Flowers
+            </button>
+        </nav>
+
+        <!-- Content Card Container -->
+        <div class="content-card">
+            <!-- Love Letter Tab -->
+            <div id="love-letter-tab" class="tab-content active">
+                <div class="letter-container">
+                    <h1 class="letter-header">My Dearest Nurgul abla,</h1>
+
+                    <div class="letter-inner-box">
+                        <span class="inner-box-title">A Letter For You</span>
+                        <div class="letter-body">
+                            <p>In just over a year, you became so much more than a friend to me - you became like a real
+                                sister. You were always there for me, supported me no matter what, and constantly
+                                motivated me. You’re my comfort person, and time with you is always the best.</p>
+
+                            <p>I truly don’t know what I’d do without you. Thank you for everything. I love you so much,
+                                and I’m going to miss you a lot when you graduate. I wish you all the happiness and
+                                success in the world. 🤍</p>
+
+                            <p>Happy 18th Birthday!</p>
+
+                            <p class="letter-signature">With love,<br>Aikumis 💜</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music Tab -->
+            <div id="music-tab" class="tab-content">
+                <h2 class="tab-title cursive-text">
+                    <span class="title-icon">🎵</span>
+                    Our Special Playlist
+                </h2>
+
+                <div class="music-player-card">
+                    <div class="now-playing">
+                        <div class="album-art-circle">
+                            <div class="vinyl-disc">
+                                <div class="vinyl-center"></div>
+                            </div>
+                        </div>
+                        <div class="now-playing-info">
+                            <h3 id="current-song-title" class="cursive-text">Out Of My League</h3>
+                            <p id="current-song-artist">Fitz and The Tantrums</p>
+                        </div>
+                    </div>
+
+                    <div class="progress-container">
+                        <span id="current-time">0:00</span>
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill"></div>
+                            <input type="range" id="seek-slider" class="seek-slider" min="0" max="100" value="0">
+                        </div>
+                        <span id="duration">0:00</span>
+                    </div>
+
+                    <div class="player-controls">
+                        <button id="prev-btn" class="control-btn">⏮</button>
+                        <button id="play-pause-btn" class="control-btn play-btn">▶</button>
+                        <button id="next-btn" class="control-btn">⏭</button>
+                    </div>
+                </div>
+
+                <div class="song-cards-grid">
+                    <div class="song-card" data-index="0">
+                        <div class="song-card-info">
+                            <div class="song-card-title cursive-text">Out Of My League</div>
+                            <div class="song-card-artist">Fitz and The Tantrums</div>
+                        </div>
+                    </div>
+                    <div class="song-card" data-index="1">
+                        <div class="song-card-info">
+                            <div class="song-card-title cursive-text">The Lost Song</div>
+                            <div class="song-card-artist">The Cat Empire</div>
+                        </div>
+                    </div>
+                    <div class="song-card" data-index="2">
+                        <div class="song-card-info">
+                            <div class="song-card-title cursive-text">Zhanbyr</div>
+                            <div class="song-card-artist">Kunzharyq</div>
+                        </div>
+                    </div>
+                    <div class="song-card" data-index="3">
+                        <div class="song-card-info">
+                            <div class="song-card-title cursive-text">Tulamaidy</div>
+                            <div class="song-card-artist">Kunzharyq</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cake Tab -->
+            <div id="cake-tab" class="tab-content">
+                <h2 class="tab-title cursive-text">
+                    <span class="title-icon">🎂</span>
+                    Birthday Cake
+                </h2>
+
+                <div class="cake-scene-container">
+                    <!-- Confetti Bg -->
+                    <div class="confetti c1"></div>
+                    <div class="confetti c2"></div>
+                    <div class="confetti c3"></div>
+                    <div class="confetti c4"></div>
+
+                    <div class="cake-vector">
+                        <!-- Candle -->
+                        <div class="v-candle-container">
+                            <div class="v-flame"></div>
+                            <div class="v-candle-body">
+                                <div class="v-candle-stripe"></div>
+                            </div>
+                        </div>
+
+                        <!-- Top Layer -->
+                        <div class="v-layer v-layer-3">
+
+                        </div>
+
+                        <!-- Middle Layer -->
+                        <div class="v-layer v-layer-2"></div>
+
+                        <!-- Bottom Layer -->
+                        <div class="v-layer v-layer-1"></div>
+                    </div>
+
+                    <div class="v-plate"></div>
+
+                    <button id="rebuild-cake-btn" class="rebuild-btn">Light It Up Again</button>
+                </div>
+            </div>
+
+            <!-- Flowers Tab -->
+            <div id="flowers-tab" class="tab-content">
+                <h2 class="tab-title cursive-text">
+                    A Bouquet of Flowers from Aikumis
+                </h2>
+
+                <div class="bouquet-container">
+                    <div class="flower-bunch">
+                        <!-- 5 Tulips -->
+                        <div class="tulip t-far-left" style="--d: 0.1s">
+                            <div class="stem"></div>
+                            <div class="flower-head">
+                                <div class="petal p-left"></div>
+                                <div class="petal p-center"></div>
+                                <div class="petal p-right"></div>
+                            </div>
+                        </div>
+                        <div class="tulip t-left" style="--d: 0.3s">
+                            <div class="stem"></div>
+                            <div class="flower-head">
+                                <div class="petal p-left"></div>
+                                <div class="petal p-center"></div>
+                                <div class="petal p-right"></div>
+                            </div>
+                        </div>
+                        <div class="tulip t-center" style="--d: 0.5s">
+                            <div class="stem"></div>
+                            <div class="flower-head">
+                                <div class="petal p-left"></div>
+                                <div class="petal p-center"></div>
+                                <div class="petal p-right"></div>
+                            </div>
+                        </div>
+                        <div class="tulip t-right" style="--d: 0.7s">
+                            <div class="stem"></div>
+                            <div class="flower-head">
+                                <div class="petal p-left"></div>
+                                <div class="petal p-center"></div>
+                                <div class="petal p-right"></div>
+                            </div>
+                        </div>
+                        <div class="tulip t-far-right" style="--d: 0.9s">
+                            <div class="stem"></div>
+                            <div class="flower-head">
+                                <div class="petal p-left"></div>
+                                <div class="petal p-center"></div>
+                                <div class="petal p-right"></div>
+                            </div>
+                        </div>
+
+                        <!-- Bow at intersection -->
+                        <div class="bouquet-bow">
+                            <div class="bb-left"></div>
+                            <div class="bb-right"></div>
+                            <div class="bb-center"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="replay-bouquet-btn" class="rebuild-btn">Present Again</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-player"></audio>
+    <script src="script.js"></script>
+</body>
+
+</html>
