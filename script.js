@@ -5,22 +5,22 @@ const CONFIG = {
         {
             title: 'Out Of My League',
             artist: 'Fitz and The Tantrums',
-            src: 'songs/Out-of-My-League.mp3.mpeg'
+            src: 'Out-of-My-League.mp3.mpeg'
         },
         {
             title: 'The Lost Song',
             artist: 'The Cat Empire',
-            src: 'songs/The-Lost-Song.mp3'
+            src: 'The-Lost-Song.mp3'
         },
         {
             title: 'Zhanbyr',
             artist: 'Kunzharyq',
-            src: 'songs/zhanbyr.mp3'
+            src: 'zhanbyr.mp3'
         },
         {
             title: 'Tulamaidy',
             artist: 'Kunzharyq',
-            src: 'songs/Tulamaidy.mp3'
+            src: 'Tulamaidy.mp3'
         }
     ]
 };
@@ -217,4 +217,5 @@ function playBouquet() {
 }
 
 replayBouquetBtn.addEventListener('click', playBouquet);
+
 
